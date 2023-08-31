@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Result</title>
+</head>
+<body>
+    <h1>Search Result "<span th:utext="${searchQuery}"></span>"</h1>
+
+    <table>
+        <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Jurusan</th>
+            <th>Tanggal Lahir</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="mahasiswa : ${mahasiswaList}">
+            <td th:text="${mahasiswa.nim}">NIM</td>
+            <td th:text="${mahasiswa.nama}">Nama</td>
+            <td th:text="${mahasiswa.jurusan}">Jurusan</td>
+            <td th:text="${#temporals.format(mahasiswa.tanggallahir, 'MM-dd-yyyy')}"></td>
+            <td>
+                <a th:href="@{/edit/{id}(id=${mahasiswa.nim})}">Edit</a>
+                <a th:href="@{/delete/{id}(id=${mahasiswa.nim})}">Delete</a>
+                <a th:href="@{/details/{id}(id=${mahasiswa.nim})}">Details</a>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <a th:href="@{/}">Back to List</a>
+</body>
+</html>

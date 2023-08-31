@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Detail Mahasiswa</title>
+    </head>
+    <body>
+        <h1>Detail Mahasiswa</h1>
+        <p>NIM: <span th:text="${mahasiswa.nim}"></span></p>
+        <p>Nama: <span th:text="${mahasiswa.nama}"></span></p>
+        <p>Jurusan: <span th:text="${mahasiswa.jurusan}"></span></p>
+        <p>Tanggal Lahir: <span th:text="${#temporals.format(mahasiswa.tanggallahir, 'MM-dd-yyyy')}"></span></p>
+        <a th:href="@{/}">Back to List</a>
+    </body>
+</html>

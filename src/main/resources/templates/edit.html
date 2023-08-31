@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Edit Mahasiswa</title>
+    </head>
+    <body>
+        <h1>Edit Mahasiswa</h1>
+        <form action="/update" method="post" th:object="${mahasiswa}" th:action="@{/update}">
+            <label for="nim">NIM:</label>
+            <input type="text" id="nim" th:field="*{nim}" readonly>
+            <br>
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" th:field="*{nama}" required>
+            <br>
+            <label for="jurusan">Jurusan:</label>
+            <select id="jurusan" th:field="*{jurusan}" required>
+                <option value="D4 Komputasi Statistik" th:selected="${mahasiswa.jurusan == 'D4 Komputasi Statistik'}">D4 Komputasi Statistik</option>
+                <option value="D4 Statistika" th:selected="${mahasiswa.jurusan == 'D4 Statistika'}">D4 Statistika</option>
+                <option value="D3 Statistika" th:selected="${mahasiswa.jurusan == 'D3 Statistika'}">D3 Statistika</option>
+            </select>
+
+            <br>
+            <label for="tanggal_lahir">Tanggal Lahir:</label>
+            <input type="date" id="tanggal_lahir" name="tanggallahir" th:field="${mahasiswa.tanggallahir}" />
+            <br>
+            <button type="submit">Update</button>
+        </form>
+
+        <br>
+        <a th:href="@{/}">Back to List</a>
+    </body>
+</html>
